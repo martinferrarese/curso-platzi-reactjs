@@ -1,8 +1,8 @@
 import './TodoSearch.css';
 
-function TodoSearch() {
-    const onSearchValueChange = (e) => {
-        console.log(`Texto en el input: ${e.target.value}`);
+function TodoSearch({setSearchValue}) {
+    const onSearchValueChange = (event) => {
+        setSearchValue(event.target.value);
     }
 
     return (
