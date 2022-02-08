@@ -5,13 +5,14 @@ import { TodoItem } from './TodoItem';
 import {CreateTodoButton} from './CreateTodoButton';
 import React, { useState } from 'react';
 
-const todos = [
+const todosDefault = [
   { text: 'Aprender React', completed: false },
   { text: 'Leer el libro', completed: true },
   { text: 'Ver un curso de finanzas', completed: true }
 ]
 
 function App() {
+  const [todos, setTodos] = useState(todosDefault);
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
   const [searchValue, setSearchValue] = useState('');
@@ -25,6 +26,13 @@ function App() {
     });
   }
 
+  const completeTodo = (text) => {
+    const updatedTodos = [...todos];
+    let indexTodoToComplete = updatedTodos.findIndex(todo => todo.text === text);
+    updatedTodos[indexTodoToComplete].completed = true;
+    setTodos(updatedTodos);
+  }
+
   return (
     //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
     <React.Fragment>
@@ -32,7 +40,7 @@ function App() {
       <TodoSearch value={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} completeTodo={() => completeTodo(todo.text)}/>
         ))}
       </TodoList>
       <CreateTodoButton />
