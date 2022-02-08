@@ -40,7 +40,12 @@ function App() {
       <TodoSearch value={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map(todo => (
-          <TodoItem key={todo.text} text={todo.text} completed={todo.completed} completeTodo={() => completeTodo(todo.text)}/>
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text} 
+            completed={todo.completed} 
+            completeTodo={() => completeTodo(todo.text)}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />
