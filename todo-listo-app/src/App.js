@@ -28,8 +28,15 @@ function App() {
 
   const completeTodo = (text) => {
     const updatedTodos = [...todos];
-    let indexTodoToComplete = updatedTodos.findIndex(todo => todo.text === text);
+    const indexTodoToComplete = updatedTodos.findIndex(todo => todo.text === text);
     updatedTodos[indexTodoToComplete].completed = true;
+    setTodos(updatedTodos);
+  }
+
+  const deleteTodo = (text) => {
+    const updatedTodos = [...todos];
+    const indexTodoToDelete = updatedTodos.findIndex(todo => todo.text === text);
+    updatedTodos.splice(indexTodoToDelete, 1);
     setTodos(updatedTodos);
   }
 
@@ -45,6 +52,7 @@ function App() {
             text={todo.text} 
             completed={todo.completed} 
             completeTodo={() => completeTodo(todo.text)}
+            deleteTodo={() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList>
