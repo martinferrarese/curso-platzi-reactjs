@@ -8,7 +8,6 @@ const todosDefault = [
 ]
 
 function useLocalStorage(itemName, initialValue) {
-  console.log("Entro acá");
   const localStorageItem = localStorage.getItem(itemName);
   let parsedItem;
 
