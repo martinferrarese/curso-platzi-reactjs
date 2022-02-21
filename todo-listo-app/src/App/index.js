@@ -30,7 +30,7 @@ function useLocalStorage(itemName, initialValue) {
       } catch (error) {
         setError(error);
       }
-    }, 2000);
+    }, 1500);
     
   }, []);
 
@@ -72,7 +72,6 @@ function App() {
       return todo.text.toLowerCase().includes(searchValue.toLowerCase());
     });
   }
-
 
   const completeTodo = (text) => {
     const updatedTodos = [...todos];
