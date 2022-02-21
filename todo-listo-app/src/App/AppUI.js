@@ -7,6 +7,8 @@ import React from 'react';
 
 function AppUI(
     {
+        error,
+        loading,
         completedTodos,
         totalTodos,
         searchValue,
@@ -28,6 +30,9 @@ function AppUI(
             setSearchValue={setSearchValue}
         />
         <TodoList>
+            {error && <p>Se rompió todo, maestro...</p>}
+            {loading && <p>Tranqui que está cargando!</p>}
+            {(!loading && !searchedTodos.length) && <p>Agrega algún TODO!</p>}
             {searchedTodos.map(todo => (
                 <TodoItem 
                     key={todo.text} 
