@@ -21,28 +21,28 @@ function AppUI(
     return (
         //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
         <React.Fragment>
-        <TodoCounter 
-            completedTodos={completedTodos}
-            totalTodos={totalTodos}
-        />
-        <TodoSearch
-            value={searchValue}
-            setSearchValue={setSearchValue}
-        />
-        <TodoList>
-            {error && <p>Se rompió todo, maestro...</p>}
-            {loading && <p>Tranqui que está cargando!</p>}
-            {(!loading && !searchedTodos.length) && <p>Agrega algún TODO!</p>}
-            {searchedTodos.map(todo => (
-                <TodoItem 
-                    key={todo.text} 
-                    text={todo.text} 
-                    completed={todo.completed} 
-                    onComplete={() => completeTodo(todo.text)}
-                    onDelete={() => deleteTodo(todo.text)}
-                />
-            ))}
-        </TodoList>
+            <TodoCounter 
+                completedTodos={completedTodos}
+                totalTodos={totalTodos}
+            />
+            <TodoSearch
+                value={searchValue}
+                setSearchValue={setSearchValue}
+            />
+            <TodoList>
+                {error && <p>Se rompió todo, maestro...</p>}
+                {loading && <p>Tranqui que está cargando!</p>}
+                {(!loading && !searchedTodos.length) && <p>Agrega algún TODO!</p>}
+                {searchedTodos.map(todo => (
+                    <TodoItem 
+                        key={todo.text} 
+                        text={todo.text} 
+                        completed={todo.completed} 
+                        onComplete={() => completeTodo(todo.text)}
+                        onDelete={() => deleteTodo(todo.text)}
+                    />
+                ))}
+            </TodoList>
         <CreateTodoButton />
     </React.Fragment>
     );
