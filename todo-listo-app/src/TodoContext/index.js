@@ -19,6 +19,7 @@ function TodoProvider(props) {
     const completedTodos = todos.filter(todo => !!todo.completed).length;
     const totalTodos = todos.length;
     const [searchValue, setSearchValue] = useState('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     let searchedTodos = [];
     
@@ -54,7 +55,9 @@ function TodoProvider(props) {
             setSearchValue,
             searchedTodos,
             completeTodo,
-            deleteTodo
+            deleteTodo,
+            isModalVisible,
+            setIsModalVisible
         }}>
             {props.children}
         </TodoContext.Provider>
