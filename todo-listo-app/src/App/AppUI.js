@@ -6,9 +6,10 @@ import {CreateTodoButton} from '../CreateTodoButton';
 import React, { useContext } from 'react';
 import { TodoContext } from '../TodoContext';
 import Modal from '../Modal';
+import TodoForm from '../TodoForm';
 
 function AppUI() {
-    const { error, loading, searchedTodos, completeTodo, deleteTodo, searchValue, isModalVisible } = useContext(TodoContext);
+    const { error, loading, searchedTodos, completeTodo, deleteTodo, searchValue, isModalVisible, setIsModalVisible } = useContext(TodoContext);
     return (
         //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
         <React.Fragment>
@@ -38,10 +39,10 @@ function AppUI() {
                         />
                 ))}
             </TodoList>
-        <CreateTodoButton />
+        <CreateTodoButton setIsModalVisible={setIsModalVisible} />
         {!!isModalVisible && 
             <Modal>
-                <p>Aguante la FA FA FA</p>
+                <TodoForm />
             </Modal>
         }
     </React.Fragment>

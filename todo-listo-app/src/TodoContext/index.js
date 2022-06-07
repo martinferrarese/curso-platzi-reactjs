@@ -45,6 +45,15 @@ function TodoProvider(props) {
         setTodos(updatedTodos);
     }
 
+    const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+            completed: false,
+            text
+        });
+        setTodos(newTodos);
+    }
+
     return (
         <TodoContext.Provider value={{
             error,
@@ -57,7 +66,8 @@ function TodoProvider(props) {
             completeTodo,
             deleteTodo,
             isModalVisible,
-            setIsModalVisible
+            setIsModalVisible,
+            addTodo
         }}>
             {props.children}
         </TodoContext.Provider>
