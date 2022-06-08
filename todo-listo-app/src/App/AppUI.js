@@ -7,20 +7,25 @@ import React, { useContext } from 'react';
 import { TodoContext } from '../TodoContext';
 import Modal from '../Modal';
 import TodoForm from '../TodoForm';
+import TodoLoader from '../TodoLoader';
 
 function AppUI() {
     const { error, loading, searchedTodos, completeTodo, deleteTodo, searchValue, isModalVisible, setIsModalVisible } = useContext(TodoContext);
     return (
         //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
         <React.Fragment>
-            <TodoCounter/>
-            <TodoSearch/>
+            {loading && 
+                <TodoLoader/>
+            }
+            {!loading &&
+                <TodoCounter/>
+            }
+            {!loading &&
+                <TodoSearch/>
+            }
             <TodoList>
                 {error && 
                     <p>Se rompió todo, maestro...</p>
-                }
-                {loading && 
-                    <p>Tranqui que está cargando!</p>
                 }
                 {(!loading && searchValue.length > 0 && !searchedTodos.length) && 
                     <div><p>No hubo resultados con esa búsqueda.</p></div>
@@ -39,12 +44,14 @@ function AppUI() {
                         />
                 ))}
             </TodoList>
-        <CreateTodoButton setIsModalVisible={setIsModalVisible} />
-        {!!isModalVisible && 
-            <Modal>
-                <TodoForm />
-            </Modal>
-        }
+            {!loading &&
+                <CreateTodoButton setIsModalVisible={setIsModalVisible} />
+            }
+            {!!isModalVisible && 
+                <Modal>
+                    <TodoForm />
+                </Modal>
+            }
     </React.Fragment>
     );
 }
