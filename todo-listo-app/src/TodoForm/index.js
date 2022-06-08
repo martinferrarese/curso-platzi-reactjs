@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { TodoContext } from '../TodoContext';
 
 function TodoForm() {
-    const { saveTodos, setIsModalVisible, addTodo } = useContext(TodoContext);
+    const { setIsModalVisible, addTodo } = useContext(TodoContext);
     const [newTodoValue, setNewTodoValue] = useState('');
 
     const onChange = (event) => {
