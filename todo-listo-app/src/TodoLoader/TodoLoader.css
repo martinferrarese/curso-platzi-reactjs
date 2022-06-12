@@ -3,8 +3,9 @@
     border: 1px solid #e5e6e9;
     border-radius: 5px;
     max-width: 769px;
-    padding: 1rem;
+    padding: 48px;
     margin: 0 auto;
+    margin-top: 48px;
 }
 
 .background {

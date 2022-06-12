@@ -18,34 +18,34 @@ function AppUI() {
                 <TodoLoader/>
             }
             {!loading &&
-                <TodoCounter/>
-            }
-            {!loading &&
-                <TodoSearch/>
-            }
-            <TodoList>
-                {error && 
-                    <p>Se rompió todo, maestro...</p>
-                }
-                {(!loading && searchValue.length > 0 && !searchedTodos.length) && 
-                    <div><p>No hubo resultados con esa búsqueda.</p></div>
-                }
-                {(!loading && searchValue.length === 0 && !searchedTodos.length) && 
-                    <div><p>Nada por aquí... Agrega algún TODO!</p></div>
-                }
-                {!loading && 
-                    searchedTodos.map(todo => (
-                        <TodoItem 
-                            key={todo.text} 
-                            text={todo.text} 
-                            completed={todo.completed} 
-                            onComplete={() => completeTodo(todo.text)}
-                            onDelete={() => deleteTodo(todo.text)}
-                        />
-                ))}
-            </TodoList>
-            {!loading &&
-                <CreateTodoButton setIsModalVisible={setIsModalVisible} />
+                <>
+                    <TodoCounter/>
+                    <TodoSearch/>
+                    <TodoList>
+                        {error && 
+                            <p>Se rompió todo, maestro...</p>
+                        }
+                        {(!loading && searchValue.length > 0 && !searchedTodos.length) && 
+                            <div><p>No hubo resultados con esa búsqueda.</p></div>
+                        }
+                        {(!loading && searchValue.length === 0 && !searchedTodos.length) && 
+                            <div><p>Nada por aquí... Agrega algún TODO!</p></div>
+                        }
+                        {!loading && 
+                            searchedTodos.map(todo => (
+                                <TodoItem 
+                                    key={todo.text} 
+                                    text={todo.text} 
+                                    completed={todo.completed} 
+                                    onComplete={() => completeTodo(todo.text)}
+                                    onDelete={() => deleteTodo(todo.text)}
+                                />
+                        ))}
+                    </TodoList>
+                    {!loading &&
+                        <CreateTodoButton setIsModalVisible={setIsModalVisible} />
+                    }
+                </>
             }
             {!!isModalVisible && 
                 <Modal>
