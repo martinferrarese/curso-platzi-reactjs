@@ -1,4 +1,5 @@
 import './TodoItem.css';
+import { TodoIcon } from '../TodoIcon';
 
 function TodoItem(props) {
 
@@ -14,10 +15,10 @@ function TodoItem(props) {
                 {props.text}
             </p>
             <span 
-                className="Icon Icon-delete"
+                className='Icon-delete'
                 onClick={props.onDelete}
             >
-                X
+                <TodoIcon icon={"close"}/>
             </span>
         </li>
     );
