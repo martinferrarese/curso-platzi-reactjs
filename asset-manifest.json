@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/comidita-app-react/static/css/main.d558e029.css",
+    "main.js": "/comidita-app-react/static/js/main.6a29d7ca.js",
+    "index.html": "/comidita-app-react/index.html",
+    "static/media/close.svg": "/comidita-app-react/static/media/close.e2db62ff123a7efa2b1f1325b7dbb2f4.svg",
+    "main.d558e029.css.map": "/comidita-app-react/static/css/main.d558e029.css.map",
+    "main.6a29d7ca.js.map": "/comidita-app-react/static/js/main.6a29d7ca.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d558e029.css",
+    "static/js/main.6a29d7ca.js"
+  ]
+}
