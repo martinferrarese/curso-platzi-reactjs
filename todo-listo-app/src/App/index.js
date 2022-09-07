@@ -3,65 +3,29 @@ import {TodoSearch} from '../TodoSearch';
 import {TodoList} from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import {CreateTodoButton} from '../CreateTodoButton';
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from '../Modal';
 import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
 import TodoHeader from '../TodoHeader';
-import { useLocalStorage } from './useLocalStorage';
-
-const todosDefault = [
-  { text: 'Aprender React', completed: false },
-  { text: 'Leer el libro', completed: true },
-  { text: 'Ver un curso de finanzas', completed: true }
-];
+import { useTodoActions } from './useTodoActions';
 
 function App() {
 
-  const {
-    item: todos,
-    saveItem: setTodos,
-    loading,
-    error,
-  } = useLocalStorage('TODOS', todosDefault);
-  const completedTodos = todos.filter(todo => !!todo.completed).length;
-  const totalTodos = todos.length;
-  const [searchValue, setSearchValue] = useState('');
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const { error, 
+          loading, 
+          searchedTodos, 
+          completeTodo, 
+          deleteTodo, 
+          searchValue, 
+          isModalVisible, 
+          setIsModalVisible, 
+          completedTodos, 
+          totalTodos, 
+          setSearchValue, 
+          addTodo 
+        } = useTodoActions();
 
-  let searchedTodos = [];
-
-  if(searchValue.length <= 1) {
-      searchedTodos = todos;
-  } else {
-      searchedTodos = todos.filter(todo => {
-          return todo.text.toLowerCase().includes(searchValue.toLowerCase());
-      });
-  }
-
-  const completeTodo = (text) => {
-      const updatedTodos = [...todos];
-      const indexTodoToComplete = updatedTodos.findIndex(todo => todo.text === text);
-      updatedTodos[indexTodoToComplete].completed = true;
-      setTodos(updatedTodos);
-  }
-
-  const deleteTodo = (text) => {
-      const updatedTodos = [...todos];
-      const indexTodoToDelete = updatedTodos.findIndex(todo => todo.text === text);
-      updatedTodos.splice(indexTodoToDelete, 1);
-      setTodos(updatedTodos);
-  }
-
-  const addTodo = (text) => {
-      const newTodos = [...todos];
-      newTodos.push({
-          completed: false,
-          text
-      });
-      setTodos(newTodos);
-  }
-  
   return (
     //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
     <React.Fragment>
