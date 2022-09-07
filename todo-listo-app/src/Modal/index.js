@@ -1,10 +1,7 @@
 import { createPortal } from 'react-dom';
-import { useContext } from 'react';
-import { TodoContext } from '../TodoContext';
 import './Modal.css'
 
-const Modal = ({children}) => {
-    const { setIsModalVisible } = useContext(TodoContext);
+const Modal = ({children, setIsModalVisible}) => {
     return createPortal(
         <div>
             <div className='ModalBackground'>

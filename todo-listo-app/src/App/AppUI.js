@@ -10,7 +10,7 @@ import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
 
 function AppUI() {
-    const { error, loading, searchedTodos, completeTodo, deleteTodo, searchValue, isModalVisible, setIsModalVisible } = useContext(TodoContext);
+    const { error, loading, searchedTodos, completeTodo, deleteTodo, searchValue, isModalVisible, setIsModalVisible, completedTodos, totalTodos, setSearchValue, addTodo } = useContext(TodoContext);
     return (
         //React.Fragment sirve para poner todo dentro de una etiqueta "vacía". Sirve para evitar poner todo en un div
         <React.Fragment>
@@ -19,8 +19,10 @@ function AppUI() {
             }
             {!loading &&
                 <>
-                    <TodoCounter/>
-                    <TodoSearch/>
+                    <TodoCounter>
+                        Completaste {completedTodos} de {totalTodos} tareas
+                    </TodoCounter>
+                    <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue} />
                     <TodoList>
                         {error && 
                             <p>Se rompió todo, maestro...</p>
@@ -29,7 +31,7 @@ function AppUI() {
                             <div><p>No hubo resultados con esa búsqueda.</p></div>
                         }
                         {(!loading && searchValue.length === 0 && !searchedTodos.length) && 
-                            <div><p>Nada por aquí... Agrega algún TODO!</p></div>
+                            <div><p>Nada por aquí... Agregá algún TODO!</p></div>
                         }
                         {!loading && 
                             searchedTodos.map(todo => (
@@ -48,8 +50,8 @@ function AppUI() {
                 </>
             }
             {!!isModalVisible && 
-                <Modal>
-                    <TodoForm />
+                <Modal setIsModalVisible={setIsModalVisible}>
+                    <TodoForm setIsModalVisible={setIsModalVisible} addTodo={addTodo} />
                 </Modal>
             }
     </React.Fragment>
