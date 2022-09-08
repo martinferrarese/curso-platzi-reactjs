@@ -65,6 +65,9 @@ function App() {
                     {!loading &&
                         <CreateTodoButton setIsModalVisible={setIsModalVisible} />
                     }
+                    <div style={{position: "fixed", bottom: 24, right: 0, left: 0}}>
+                        <p style={{fontSize: 10, textAlign: "center"}}><b>Última edición a las 08/09/2022 - 01:58 hs</b></p>
+                    </div>
                 </>
             }
             {!!isModalVisible && 
