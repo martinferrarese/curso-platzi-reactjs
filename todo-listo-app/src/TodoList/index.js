@@ -1,11 +1,16 @@
 import './TodoList.css';
 
-function TodoList({children}) {
+function TodoList({render, error, onError}) {
     return (
         <section>
-            <ul className="TodoList">
-                {children}
-            </ul>
+            {error && 
+                onError()
+            }
+            {!error &&
+                <ul className="TodoList">
+                    {render()}
+                </ul>
+            }
         </section>
     );
 }
