@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/curso-platzi-reactjs/static/css/main.d558e029.css",
-    "main.js": "/curso-platzi-reactjs/static/js/main.270823eb.js",
+    "main.js": "/curso-platzi-reactjs/static/js/main.a36c09c4.js",
     "index.html": "/curso-platzi-reactjs/index.html",
     "static/media/close.svg": "/curso-platzi-reactjs/static/media/close.e2db62ff123a7efa2b1f1325b7dbb2f4.svg",
     "main.d558e029.css.map": "/curso-platzi-reactjs/static/css/main.d558e029.css.map",
-    "main.270823eb.js.map": "/curso-platzi-reactjs/static/js/main.270823eb.js.map"
+    "main.a36c09c4.js.map": "/curso-platzi-reactjs/static/js/main.a36c09c4.js.map"
   },
   "entrypoints": [
     "static/css/main.d558e029.css",
-    "static/js/main.270823eb.js"
+    "static/js/main.a36c09c4.js"
   ]
 }
