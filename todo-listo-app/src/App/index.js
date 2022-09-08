@@ -24,7 +24,7 @@ function App() {
         completedTodos, 
         totalTodos, 
         setSearchValue, 
-        addTodo 
+        addTodo,
     } = useTodoActions();
 
     return (
@@ -44,6 +44,10 @@ function App() {
                     <TodoList
                         error={error}
                         onError={() => <p>Se rompió todo, maestro...</p>}
+                        emptySearchResult={(searchValue.length > 0 && !searchedTodos.length)}
+                        onEmptySearchResult={() => <div><p>No hubo resultados con esa búsqueda.</p></div>}
+                        emptyState={(searchValue.length === 0 && totalTodos === 0)}
+                        onEmptyState={() => <div><p>Nada por aquí... Agregá algún TODO!</p></div>}
                         render={() => 
                             (searchedTodos.map(todo => (
                                     <TodoItem 
@@ -57,12 +61,6 @@ function App() {
                             )
                         }
                     >
-                        {(searchValue.length > 0 && !searchedTodos.length) && 
-                            <div><p>No hubo resultados con esa búsqueda.</p></div>
-                        }
-                        {(searchValue.length === 0 && !searchedTodos.length) && 
-                            <div><p>Nada por aquí... Agregá algún TODO!</p></div>
-                        }
                     </TodoList>
                     {!loading &&
                         <CreateTodoButton setIsModalVisible={setIsModalVisible} />

@@ -1,12 +1,18 @@
 import './TodoList.css';
 
-function TodoList({render, error, onError}) {
+function TodoList({render, error, onError, emptySearchResult, onEmptySearchResult, emptyState, onEmptyState}) {
     return (
         <section>
             {error && 
                 onError()
             }
-            {!error &&
+            {emptySearchResult &&
+                onEmptySearchResult()                
+            }
+            {emptyState &&
+                onEmptyState()                
+            }
+            {!error && !emptySearchResult && !emptyState &&
                 <ul className="TodoList">
                     {render()}
                 </ul>
