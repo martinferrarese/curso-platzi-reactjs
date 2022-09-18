@@ -1,6 +1,6 @@
 import './TodoList.css';
 
-function TodoList({render, error, onError, emptySearchResult, onEmptySearchResult, emptyState, onEmptyState}) {
+function TodoList({searchedTodos, render, error, onError, emptySearchResult, onEmptySearchResult, emptyState, onEmptyState, children}) {
     return (
         <section>
             {error && 
@@ -14,7 +14,7 @@ function TodoList({render, error, onError, emptySearchResult, onEmptySearchResul
             }
             {!error && !emptySearchResult && !emptyState &&
                 <ul className="TodoList">
-                    {render()}
+                    {searchedTodos.map(render())}
                 </ul>
             }
         </section>

@@ -49,7 +49,7 @@ function App() {
                         emptyState={(searchValue.length === 0 && totalTodos === 0)}
                         onEmptyState={() => <div><p>Nada por aquí... Agregá algún TODO!</p></div>}
                         render={() => 
-                            (searchedTodos.map(todo => (
+                            (todo => (
                                     <TodoItem 
                                         key={todo.text} 
                                         text={todo.text} 
@@ -58,8 +58,9 @@ function App() {
                                         onDelete={() => deleteTodo(todo.text)}
                                     />
                                 ))
-                            )
+                            
                         }
+                        searchedTodos={searchedTodos}
                     >
                     </TodoList>
                     {!loading &&
