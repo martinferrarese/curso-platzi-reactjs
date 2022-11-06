@@ -1,6 +1,6 @@
 import './TodoSearch.css';
 
-function TodoSearch({ setSearchValue, searchValue }) {
+function TodoSearch({ setSearchValue, searchValue, loading }) {
     const onSearchValueChange = (event) => {
         setSearchValue(event.target.value);
     }
@@ -8,9 +8,10 @@ function TodoSearch({ setSearchValue, searchValue }) {
     return (
         <input
             value={searchValue}
-            className="TodoSearch" 
+            className="TodoSearch"
             placeholder="libro"
             onChange={onSearchValueChange}
+            disabled={loading}
         />
     );
 }

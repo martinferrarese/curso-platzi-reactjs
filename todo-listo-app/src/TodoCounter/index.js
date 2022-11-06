@@ -1,10 +1,19 @@
 import './TodoCounter.css';
 
-function TodoCounter({children}) {
+function TodoCounter({ children, loading }) {
     return (
-        <h2 className="TodoCounter">
-            {children}
-        </h2>
+        <>
+            {loading && (
+                <h2 className="TodoCounter">
+                    Cargando
+                </h2>
+            )}
+            {!loading && (
+                <h2 className="TodoCounter">
+                    {children}
+                </h2>
+            )}
+        </>
     );
 }
 
