@@ -3,7 +3,7 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '../Modal';
 import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
@@ -27,6 +27,8 @@ function App() {
         addTodo,
     } = useTodoActions();
 
+    const [showRefreshButton, setShowRefreshButton] = useState(false);
+
     return (
         <>
             <TodoHeader loading={loading}>
@@ -37,6 +39,7 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
+                {!showRefreshButton && <p style={{textAlign: 'center'}}>Hubo cambios - Refrescar</p>}
             </TodoHeader>
             {loading &&
                 <TodoLoader />
