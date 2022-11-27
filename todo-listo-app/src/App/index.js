@@ -9,7 +9,7 @@ import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
 import TodoHeader from '../TodoHeader';
 import { useTodoActions } from './useTodoActions';
-import RefreshAlert from '../RefreshAlert';
+import { RefreshAlertWithStorageListener } from '../RefreshAlert';
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
-                {!showRefreshButton && <RefreshAlert />}
+                {!showRefreshButton && <RefreshAlertWithStorageListener />}
             </TodoHeader>
             {loading &&
                 <TodoLoader />
