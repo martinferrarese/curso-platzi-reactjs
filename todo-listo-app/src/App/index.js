@@ -9,6 +9,7 @@ import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
 import TodoHeader from '../TodoHeader';
 import { useTodoActions } from './useTodoActions';
+import RefreshAlert from '../RefreshAlert';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
-                {!showRefreshButton && <p style={{textAlign: 'center'}}>Hubo cambios - Refrescar</p>}
+                {!showRefreshButton && <RefreshAlert />}
             </TodoHeader>
             {loading &&
                 <TodoLoader />
