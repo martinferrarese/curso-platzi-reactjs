@@ -40,7 +40,7 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
-                {!showRefreshButton && <RefreshAlertWithStorageListener />}
+                <RefreshAlertWithStorageListener />
             </TodoHeader>
             {loading &&
                 <TodoLoader />

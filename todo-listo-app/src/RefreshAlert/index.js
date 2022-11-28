@@ -2,9 +2,14 @@ import withStorageListener from '../HOC/withStorageListener';
 import './RefreshAlert.css';
 
 const RefreshAlert = (props) => {
-    return <p className='textAlert'>{`${props.mensaje ? props.mensaje : "Hubo cambios"} - Refrescar`}</p>;
+    return <>
+        {props.show ?
+            <p className='textAlert'>Hubo cambios - Refrescar</p>
+            :
+            null}
+    </>
 }
 
-const RefreshAlertWithStorageListener = withStorageListener("Se detectaron cambios")(RefreshAlert);
+const RefreshAlertWithStorageListener = withStorageListener(RefreshAlert);
 
 export { RefreshAlert, RefreshAlertWithStorageListener };
