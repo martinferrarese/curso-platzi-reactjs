@@ -13,6 +13,7 @@ function useTodoActions() {
       saveItem: setTodos,
       loading,
       error,
+      sincronizeStorage,
     } = useLocalStorage('TODOS', todosDefault);
 
     const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -65,7 +66,8 @@ function useTodoActions() {
       searchedTodos,
       setSearchValue,
       setIsModalVisible,
-      searchValue
+      searchValue,
+      sincronizeStorage,
     }
 }
 

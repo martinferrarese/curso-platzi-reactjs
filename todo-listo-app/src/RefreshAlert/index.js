@@ -4,9 +4,16 @@ import './RefreshAlert.css';
 const RefreshAlert = (props) => {
     return <>
         {props.show ?
-            <p onClick={() => { window.location.reload(false); }} className='textAlert'>Hubo cambios - Refrescar</p>
+            <p onClick={() => {
+                props.toogleVisibility(false); 
+                props.refreshAction();
+            }} 
+            className='textAlert'>
+                Hubo cambios - Refrescar
+            </p>
             :
-            null}
+            null
+        }
     </>
 }
 

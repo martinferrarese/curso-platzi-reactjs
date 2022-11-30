@@ -16,6 +16,7 @@ function useLocalStorage(itemName, initialValue) {
     },[itemName]);
 
     const sincronizeStorage = useCallback(() => {
+      setLoading(true);
       setTimeout(() => {
         try {
           let localStorageItem;
@@ -45,7 +46,7 @@ function useLocalStorage(itemName, initialValue) {
       saveItem,
       loading,
       error,
-      sincronizeStorage
+      sincronizeStorage,
     }
   }
 

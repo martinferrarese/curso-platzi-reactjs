@@ -25,6 +25,7 @@ function App() {
         totalTodos,
         setSearchValue,
         addTodo,
+        sincronizeStorage,
     } = useTodoActions();
 
     return (
@@ -37,7 +38,7 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
-                <RefreshAlertWithStorageListener />
+                <RefreshAlertWithStorageListener refreshAction={sincronizeStorage} />
             </TodoHeader>
             {loading &&
                 <TodoLoader />
