@@ -1,18 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const withStorageListener = (WrappedComponent) => {
 
     return function WrappedComponenteWithStorageListener(props) {
         const [storageHasChanged, setStorageHasChanged] = useState(false);
-        window.addEventListener('storage', (change) => {
+        useEffect(() => {
+            console.log("hgfghj");
+            window.addEventListener('storage', (change) => {
             if (change.key === "TODOS") {
                 props.disableActions(true);
                 setStorageHasChanged(true);
             }
-        });
+            });
 
-
+            return () => { window.removeEventListener("storage", () => null)}
+        }, [])
+        
         return <WrappedComponent 
             {...props}
             show={storageHasChanged} 
