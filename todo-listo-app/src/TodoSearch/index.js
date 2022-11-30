@@ -6,13 +6,15 @@ function TodoSearch({ setSearchValue, searchValue, loading }) {
     }
 
     return (
-        <input
-            value={searchValue}
-            className="TodoSearch"
-            placeholder="libro"
-            onChange={onSearchValueChange}
-            disabled={loading}
-        />
+        <div className='TodoSearch-div'>
+            <input
+                value={searchValue}
+                className="TodoSearch"
+                placeholder="libro"
+                onChange={onSearchValueChange}
+                disabled={loading}
+            />
+        </div>
     );
 }
 

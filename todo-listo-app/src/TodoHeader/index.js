@@ -3,7 +3,7 @@ import "./TodoHeader.css";
 
 function TodoHeader({ children, loading }) {
     return (
-        <div className="culo">
+        <div className="header">
             <header>
                 {Children
                     .toArray(children)

@@ -53,11 +53,23 @@ function App() {
                 <>
                     <TodoList
                         error={error}
-                        onError={() => <p>Se rompió todo, maestro...</p>}
+                        onError={() => 
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <p>Se rompió todo, maestro...</p>
+                                </div>
+                        }
                         emptySearchResult={(searchValue.length > 0 && !searchedTodos.length)}
-                        onEmptySearchResult={() => <div><p>No hubo resultados con esa búsqueda.</p></div>}
+                        onEmptySearchResult={() => 
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <p>No hubo resultados con esa búsqueda</p>
+                            </div>
+                        }
                         emptyState={(searchValue.length === 0 && totalTodos === 0)}
-                        onEmptyState={() => <div><p>Nada por aquí... Agregá algún TODO!</p></div>}
+                        onEmptyState={() => 
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <p>Nada por aquí... Agregá algún TODO!</p>
+                            </div>
+                        }
                         render={() =>
                         (todo => (
                             <TodoItem
@@ -83,7 +95,7 @@ function App() {
 
             <div style={{ position: "fixed", bottom: 24, right: 0, left: 0 }}>
                 <p style={{ fontSize: 10, textAlign: "center" }}>
-                    <b>Última edición a las 08/09/2022 - 01:58 hs</b>
+                    <b>Última edición a las 30/11/2022 - 01:50 hs</b>
                 </p>
             </div>
 
