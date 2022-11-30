@@ -7,7 +7,7 @@ function TodoItem(props) {
         <li className="TodoItem">
             <span 
                 className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}
-                onClick={props.onComplete}
+                onClick={!props.refreshNeeded ? props.onComplete : null}
             >
                 ✓
             </span>
@@ -16,7 +16,7 @@ function TodoItem(props) {
             </p>
             <span 
                 className='Icon-delete'
-                onClick={props.onDelete}
+                onClick={!props.refreshNeeded ? props.onDelete : null}
             >
                 <TodoIcon icon={"close"}/>
             </span>

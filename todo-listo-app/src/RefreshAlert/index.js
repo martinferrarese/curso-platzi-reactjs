@@ -5,7 +5,8 @@ const RefreshAlert = (props) => {
     return <>
         {props.show ?
             <p onClick={() => {
-                props.toogleVisibility(false); 
+                props.toogleVisibility(false);
+                props.disableActions(false);
                 props.refreshAction();
             }} 
             className='textAlert'>

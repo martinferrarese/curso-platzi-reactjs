@@ -9,6 +9,7 @@ import TodoLoader from '../TodoLoader';
 import TodoHeader from '../TodoHeader';
 import { useTodoActions } from './useTodoActions';
 import { RefreshAlertWithStorageListener } from '../RefreshAlert';
+import { useState } from 'react';
 
 function App() {
 
@@ -28,6 +29,8 @@ function App() {
         sincronizeStorage,
     } = useTodoActions();
 
+    const [refreshNeeded, setRefreshNeeded] = useState(false);
+
     return (
         <>
             <TodoHeader loading={loading}>
@@ -38,7 +41,10 @@ function App() {
                     setSearchValue={setSearchValue}
                     searchValue={searchValue}
                 />
-                <RefreshAlertWithStorageListener refreshAction={sincronizeStorage} />
+                <RefreshAlertWithStorageListener 
+                    refreshAction={sincronizeStorage} 
+                    disableActions={setRefreshNeeded} 
+                />
             </TodoHeader>
             {loading &&
                 <TodoLoader />
@@ -60,6 +66,7 @@ function App() {
                                 completed={todo.completed}
                                 onComplete={() => completeTodo(todo.text)}
                                 onDelete={() => deleteTodo(todo.text)}
+                                refreshNeeded={refreshNeeded}
                             />
                         ))
 
@@ -67,12 +74,17 @@ function App() {
                         searchedTodos={searchedTodos}
                     >
                     </TodoList>
-                    <CreateTodoButton setIsModalVisible={setIsModalVisible} />
+                    <CreateTodoButton 
+                        setIsModalVisible={setIsModalVisible} 
+                        refreshNeeded={refreshNeeded} 
+                    />
                 </>
             )}
 
             <div style={{ position: "fixed", bottom: 24, right: 0, left: 0 }}>
-                <p style={{ fontSize: 10, textAlign: "center" }}><b>Última edición a las 08/09/2022 - 01:58 hs</b></p>
+                <p style={{ fontSize: 10, textAlign: "center" }}>
+                    <b>Última edición a las 08/09/2022 - 01:58 hs</b>
+                </p>
             </div>
 
             {!!isModalVisible &&
