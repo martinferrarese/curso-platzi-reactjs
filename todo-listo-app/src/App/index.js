@@ -3,7 +3,6 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
-import React, { useState } from 'react';
 import Modal from '../Modal';
 import TodoForm from '../TodoForm';
 import TodoLoader from '../TodoLoader';
@@ -27,8 +26,6 @@ function App() {
         setSearchValue,
         addTodo,
     } = useTodoActions();
-
-    const [showRefreshButton, setShowRefreshButton] = useState(false);
 
     return (
         <>
