@@ -95,7 +95,7 @@ function App() {
 
             <div style={{ position: "fixed", bottom: 24, right: 0, left: 0 }}>
                 <p style={{ fontSize: 10, textAlign: "center" }}>
-                    <b>Última edición a las 30/11/2022 - 01:50 hs</b>
+                    <b>Última edición a las 30/11/2022 - 02:12 hs</b>
                 </p>
             </div>
 
